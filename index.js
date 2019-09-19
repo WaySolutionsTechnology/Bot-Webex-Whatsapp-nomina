@@ -151,13 +151,11 @@ async function consultarInspeccionNumero(agent) {
         if (agent.originalRequest.source == 'spark') {
             var data = await getUsuarioEmail(agent.originalRequest.payload.data.data.personEmail);
             await test(data, agent)
-                // await spark(agent)
         } else if (agent.originalRequest.source == 'twilio') {
             var whatsapp = agent.originalRequest.payload.data.From
             whatsapp = whatsapp.slice(12);
             var data = await getUsuarioWhatsapp(whatsapp);
             await test(data, agent);
-            // await whatsapp(agent)
         }
     } catch (error) {
         console.log(error);
